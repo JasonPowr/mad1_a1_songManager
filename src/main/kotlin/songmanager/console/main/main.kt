@@ -1,5 +1,6 @@
 package songmanager.console.main
+import songmanager.console.controllers.SongController
 
 fun main(args: Array<String>) {
-    println("hello world")
+    SongController().startMenu()
 }
