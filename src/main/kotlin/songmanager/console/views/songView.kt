@@ -21,22 +21,34 @@ class songView {
         return if (input.toIntOrNull() != null && !input.isEmpty())
             input.toInt()
         else
-            -9
+            -1
     }
-    fun addSong(): SongModel{
+
+    fun addSong(): SongModel {
         val newSong = SongModel()
         println()
+
         println("Please enter the name of the Song:")
         newSong.title = readLine()!!
+
         println("Please enter the name of the Artist:")
         newSong.artist = readLine()!!
+
         println("Please enter the duration of the Song:")
         newSong.duration = readln().toDouble()
+
         println("Please enter the Year the Song was Released:")
         newSong.releaseYear = readln().toInt()
+
         println("Did the Song ever win an award?")
         newSong.wonAward = readln().toBoolean()
+
         return newSong
+    }
+
+    fun listSongs(){
+        println()
+        println("Here is a list of all the current songs in the system:")
     }
 }
 

@@ -17,11 +17,21 @@ fun generateRandomId(): Long {
 class JSONSongStorage : SongStore{
 
     var songs = mutableListOf<SongModel>()
+    
+    init {
+        if (exists(JSON_FILE)) {
+            deserialize()
+        }
+    }
 
     override fun create(song: SongModel) {
         song.id = generateRandomId()
         songs.add(song)
         serialize()
+    }
+
+    override fun listAll(): MutableList<SongModel> {
+        return songs
     }
 
     private fun serialize() {

@@ -1,7 +1,6 @@
 package songmanager.console.controllers
 
 import songmanager.console.models.JSONSongStorage
-import songmanager.console.models.SongModel
 import songmanager.console.views.songView
 
 class SongController {
@@ -14,6 +13,7 @@ class SongController {
             choice = songView.mainMenu()
             when (choice) {
                 1 -> add()
+                2 -> listAll()
                 0 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -24,6 +24,11 @@ class SongController {
     fun add(){
         var song = songView.addSong()
         songs.create(song)
+    }
+
+    fun listAll(){
+        songView.listSongs()
+        println(songs.listAll())
     }
 
 }
