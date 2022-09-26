@@ -1,6 +1,9 @@
 package songmanager.console.views
 
+import songmanager.console.models.SongModel
+
 class songView {
+
 
     fun mainMenu(): Int {
         println("        Main Menu        ")
@@ -19,6 +22,21 @@ class songView {
             input.toInt()
         else
             -9
+    }
+    fun addSong(): SongModel{
+        val newSong = SongModel()
+        println()
+        println("Please enter the name of the Song:")
+        newSong.title = readLine()!!
+        println("Please enter the name of the Artist:")
+        newSong.artist = readLine()!!
+        println("Please enter the duration of the Song:")
+        newSong.duration = readln().toDouble()
+        println("Please enter the Year the Song was Released:")
+        newSong.releaseYear = readln().toInt()
+        println("Did the Song ever win an award?")
+        newSong.wonAward = readln().toBoolean()
+        return newSong
     }
 }
 
