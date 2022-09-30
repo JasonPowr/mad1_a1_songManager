@@ -1,5 +1,6 @@
 package songmanager.console.views
 
+import songmanager.console.controllers.SongController
 import songmanager.console.models.SongModel
 import songmanager.console.helpers.*
 import songmanager.console.models.JSONSongStorage
@@ -15,6 +16,7 @@ class songView {
         println("     3. Update a Song")
         println("     4. Delete a Song")
         println("-------------------------")
+        println("     5. Search for a Song")
         println("     0. Exit")
         println()
         println("Please enter an option: ")
@@ -60,31 +62,60 @@ class songView {
         } while (!validateBool(input))
         newSong.wonAward = input.toBoolean()
 
+        pressEnter()
+
         return newSong
     }
 
     fun listSongs(songs: JSONSongStorage) {
         if (songs.songs.size == 0) {
             println("There are currently no Songs on the system.....")
-            println("Press Enter to Continue:")
-            readln()
+            pressEnter()
         } else {
             println("Here is a list of all the current songs in the system:")
             println()
-            for (i in songs.songs) {
+            for (song in songs.songs) {
                 println("-------------------------")
-                println("|Id: " + songs.songs[0].id)
-                println("|Name: " + songs.songs[0].title)
-                println("|Artist: " + songs.songs[0].artist)
-                println("|Duration: " + songs.songs[0].duration)
-                println("|Release Year: " + songs.songs[0].releaseYear)
-                println("|Award Won: " + songs.songs[0].wonAward)
+                println("|Id: " + song.id)
+                println("|Name: " + song.title)
+                println("|Artist: " + song.artist)
+                println("|Duration: " + song.duration)
+                println("|Release Year: " + song.releaseYear)
+                println("|Award Won: " + song.wonAward)
             }
-            println()
-            println("Please press Enter to Continue:")
-            readln()
+            pressEnter()
         }
     }
+
+    fun findSong(): String {
+        println("Please enter the name of the song")
+        val songName = readLine()!!
+        return songName
+    }
+
+    fun displaySong(song: SongModel?) {
+        if (song == null) {
+            println("No song Found by that name")
+            pressEnter()
+        } else {
+            println()
+            println("Found Song")
+            println("-------------------------")
+            println("|Name: " + song.title)
+            println("|Artist: " + song.artist)
+            println("|Duration: " + song.duration)
+            println("|Release Year: " + song.releaseYear)
+            println("|Award Won: " + song.wonAward)
+            pressEnter()
+        }
+    }
+
+    fun pressEnter() {
+        println()
+        println("Please press Enter to Continue:")
+        readln()
+    }
+
 }
 
 //https://discuss.kotlinlang.org/t/printing-in-colors/22492

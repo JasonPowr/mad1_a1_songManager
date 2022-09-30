@@ -34,6 +34,15 @@ class JSONSongStorage : SongStore{
         return songs
     }
 
+    override fun updateSong(songModel: SongModel) {
+        TODO("Not yet implemented")
+    }
+
+    override fun findSongInJSON(songName: String): SongModel? {
+        return songs.find { song -> song.title == songName }
+    }
+
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(songs, listType)
         write(JSON_FILE, jsonString)
