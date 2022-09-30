@@ -1,6 +1,7 @@
 package songmanager.console.views
 
 import songmanager.console.models.SongModel
+import songmanager.console.helpers.*
 
 class songView {
 
@@ -28,20 +29,35 @@ class songView {
         val newSong = SongModel()
         println()
 
-        println("Please enter the name of the Song:")
-        newSong.title = readLine()!!
+        do {
+            println("Please enter the name of the Song:")
+            newSong.title = readLine()!!
+        }while (!validateString(newSong.title))
 
-        println("Please enter the name of the Artist:")
-        newSong.artist = readLine()!!
+        do {
+            println("Please enter the name of the Artist:")
+            newSong.artist = readLine()!!
+        }while (!validateString(newSong.artist))
 
-        println("Please enter the duration of the Song:")
-        newSong.duration = readln().toDouble()
+        var input = ""
+        do {
+            println("Please enter the duration of the Song:")
+            input = readLine()!!
+        }while (!validateDouble(input))
+        newSong.duration = input.toDouble()
 
-        println("Please enter the Year the Song was Released:")
-        newSong.releaseYear = readln().toInt()
 
+        do {
+            println("Please enter the Year the Song was Released:")
+            input = readLine()!!
+        }while (!validateInt(input))
+        newSong.releaseYear = input.toInt()
+
+        do {
         println("Did the Song ever win an award?")
-        newSong.wonAward = readln().toBoolean()
+            input = readLine()!!
+        }while (!validateBool(input))
+        newSong.wonAward = input.toBoolean()
 
         return newSong
     }
