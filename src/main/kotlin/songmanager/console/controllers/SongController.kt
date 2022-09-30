@@ -27,8 +27,7 @@ class SongController {
     }
 
     fun listAll(){
-        songView.listSongs()
-        println(songs.listAll())
+        songView.listSongs(songs)
     }
 
 }
