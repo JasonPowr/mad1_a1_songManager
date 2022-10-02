@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54f418a-5243-4595-a162-b7aaac113db5" name="Changes" comment="Added search functionality aswell as fixed diplaying songs">
+    <list default="true" id="d54f418a-5243-4595-a162-b7aaac113db5" name="Changes" comment="Added Update Functionality">
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/controllers/SongController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/controllers/SongController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/helpers/ValidationUtilKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/helpers/ValidationUtilKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/models/JSONSongStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/models/JSONSongStorage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/models/SongStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/models/SongStore.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/views/songView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/songmanager/console/views/songView.class" afterDir="false" />
@@ -24,8 +21,6 @@
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/package-parts.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/package-parts.tab" afterDir="false" />
@@ -55,7 +50,6 @@
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/controllers/SongController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/controllers/SongController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/helpers/ValidationUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/helpers/ValidationUtil.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/models/JSONSongStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/models/JSONSongStorage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/models/SongStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/models/SongStore.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/views/songView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/songmanager/console/views/songView.kt" afterDir="false" />
@@ -205,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664549628320</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Update Functionality">
+      <created>1664718710742</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1664718710742</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,6 +228,7 @@
     <MESSAGE value="Added a validation helper + added validation to add" />
     <MESSAGE value="Made List Songs more user friendly" />
     <MESSAGE value="Added search functionality aswell as fixed diplaying songs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added search functionality aswell as fixed diplaying songs" />
+    <MESSAGE value="Added Update Functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Update Functionality" />
   </component>
 </project>
