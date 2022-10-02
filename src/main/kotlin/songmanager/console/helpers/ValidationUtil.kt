@@ -6,7 +6,7 @@ var errMessage = red+"Please enter a Valid Value"
 
 fun validateString(str: String): Boolean{
     if (str.isBlank()) {
-        println(errMessage)
+        println("$errMessage$reset")
         return false
     }
     return true

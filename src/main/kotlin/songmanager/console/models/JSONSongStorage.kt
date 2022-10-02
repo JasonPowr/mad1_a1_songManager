@@ -14,10 +14,10 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class JSONSongStorage : SongStore{
+class JSONSongStorage : SongStore {
 
     var songs = mutableListOf<SongModel>()
-    
+
     init {
         if (exists(JSON_FILE)) {
             deserialize()
@@ -34,8 +34,28 @@ class JSONSongStorage : SongStore{
         return songs
     }
 
-    override fun updateSong(songModel: SongModel) {
-        TODO("Not yet implemented")
+    override fun updateSong(updatedSong: SongModel, songToUpdate: SongModel) {
+        if (updatedSong.artist.isNotEmpty()) {
+            songToUpdate.artist = updatedSong.artist
+        }
+
+        if(updatedSong.title.isNotEmpty()){
+            songToUpdate.title = updatedSong.title
+        }
+
+        if(updatedSong.duration != 0.0){
+            songToUpdate.duration = updatedSong.duration
+        }
+
+        if(updatedSong.releaseYear != 1111){
+            songToUpdate.releaseYear = updatedSong.releaseYear
+        }
+
+        if(songToUpdate.wonAward != updatedSong.wonAward){
+            songToUpdate.wonAward = updatedSong.wonAward
+        }
+
+        serialize()
     }
 
     override fun findSongInJSON(songName: String): SongModel? {

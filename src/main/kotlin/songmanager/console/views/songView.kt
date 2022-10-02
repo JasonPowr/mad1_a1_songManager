@@ -1,6 +1,5 @@
 package songmanager.console.views
 
-import songmanager.console.controllers.SongController
 import songmanager.console.models.SongModel
 import songmanager.console.helpers.*
 import songmanager.console.models.JSONSongStorage
@@ -33,7 +32,7 @@ class songView {
         println()
 
         do {
-            println("Please enter the name of the Song:")
+            println("Please enter the title of the Song:")
             newSong.title = readLine()!!
         } while (!validateString(newSong.title))
 
@@ -62,7 +61,6 @@ class songView {
         } while (!validateBool(input))
         newSong.wonAward = input.toBoolean()
 
-        pressEnter()
 
         return newSong
     }
@@ -70,50 +68,64 @@ class songView {
     fun listSongs(songs: JSONSongStorage) {
         if (songs.songs.size == 0) {
             println("There are currently no Songs on the system.....")
-            pressEnter()
         } else {
             println("Here is a list of all the current songs in the system:")
             println()
             for (song in songs.songs) {
                 println("-------------------------")
                 println("|Id: " + song.id)
-                println("|Name: " + song.title)
+                println("|Title: " + song.title)
                 println("|Artist: " + song.artist)
                 println("|Duration: " + song.duration)
                 println("|Release Year: " + song.releaseYear)
                 println("|Award Won: " + song.wonAward)
             }
-            pressEnter()
         }
     }
 
     fun findSong(): String {
-        println("Please enter the name of the song")
-        val songName = readLine()!!
+        var songName: String
+        do {
+            println("Please enter the name of the song")
+            songName = readLine()!!
+        }while (!validateString(songName))
+
         return songName
     }
 
     fun displaySong(song: SongModel?) {
         if (song == null) {
             println("No song Found by that name")
-            pressEnter()
         } else {
             println()
-            println("Found Song")
             println("-------------------------")
-            println("|Name: " + song.title)
+            println("|Title: " + song.title)
             println("|Artist: " + song.artist)
             println("|Duration: " + song.duration)
             println("|Release Year: " + song.releaseYear)
             println("|Award Won: " + song.wonAward)
-            pressEnter()
         }
     }
 
-    fun pressEnter() {
+    fun updateSong(): Int{
         println()
-        println("Please press Enter to Continue:")
-        readln()
+        println("    Update Menu")
+        println("-------------------------")
+        println("     1. Title")
+        println("     2. Artist")
+        println("     3. Duration")
+        println("     4. Release Year")
+        println("     5. Award Won")
+        println("-------------------------")
+        println("     0. Return to Main Menu")
+        println()
+        println("Please enter an option: ")
+
+        val input = readLine()!!
+        return if (input.toIntOrNull() != null && !input.isEmpty())
+            input.toInt()
+        else
+            -1
     }
 
 }
