@@ -20,7 +20,9 @@ class SongController {
                 1 -> add()
                 2 -> listAll()
                 3 -> updateSong()
-                5 -> findSong(songView.findSong())
+                4 -> deleteSong()
+                5 -> findSong(songView.findSong("Please Enter the title of the song you wish to search for..."))
+                6 -> filterByArtistsName()
                 0 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -34,18 +36,18 @@ class SongController {
     }
 
     fun listAll(){
-        songView.listSongs(songs)
+        songView.listSongs(songs.songs)
     }
     fun findSong(songName: String): SongModel? {
         val song = songs.findSongInJSON(songName)
-        songView.displaySong(song)
+        if (song == null)
+            println("There is no Song on the system by that name.....")
         return song
     }
 
     fun updateSong(){
-        songView.listSongs(songs)
-        println()
-        val songToUpdate = findSong(songView.findSong())
+        songView.listSongs(songs.songs)
+        val songToUpdate = findSong(songView.findSong("Please Enter the title of the song you wish to Update..."))
         val updatedSong = SongModel()
         var input = ""
 
@@ -96,6 +98,21 @@ class SongController {
             songs.updateSong(updatedSong,songToUpdate)
         }
 
+    }
+
+    fun deleteSong(){
+        songView.listSongs(songs.songs)
+        println()
+        val songToDelete = findSong(songView.findSong("Please Enter the title of the song you wish to Delete..."))
+        if (songToDelete != null) {
+            songs.removeSong(songToDelete)
+            songView.deleteSong()
+        }
+    }
+
+    fun filterByArtistsName(){
+        val artistName = songView.filterByArtistsName()
+        songView.listSongs(songs.filterByArtistsName(artistName))
     }
 
 }

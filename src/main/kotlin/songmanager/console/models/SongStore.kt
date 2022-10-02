@@ -5,4 +5,6 @@ interface SongStore {
     fun listAll(): MutableList<SongModel>
     fun updateSong(updatedSong:SongModel,songToUpdate: SongModel)
     fun findSongInJSON(songName: String):SongModel?
+    fun removeSong(songForRemoval: SongModel)
+    fun filterByArtistsName(artistName: String): List<SongModel>
 }

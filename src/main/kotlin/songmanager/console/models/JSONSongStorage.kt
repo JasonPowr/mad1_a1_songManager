@@ -62,6 +62,14 @@ class JSONSongStorage : SongStore {
         return songs.find { song -> song.title == songName }
     }
 
+    override fun removeSong(songForRemoval: SongModel) {
+        songs.remove(songForRemoval)
+        serialize()
+    }
+
+    override fun filterByArtistsName(artistName: String): List<SongModel> {
+        return songs.filter { songs -> songs.artist == artistName}
+    }
 
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(songs, listType)
