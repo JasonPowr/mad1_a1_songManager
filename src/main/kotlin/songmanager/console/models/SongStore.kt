@@ -7,4 +7,5 @@ interface SongStore {
     fun findSongInJSON(songName: String):SongModel?
     fun removeSong(songForRemoval: SongModel)
     fun filterByArtistsName(artistName: String): List<SongModel>
+    fun sortBy() : List<SongModel>
 }

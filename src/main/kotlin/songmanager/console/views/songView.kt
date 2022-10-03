@@ -7,21 +7,22 @@ import songmanager.console.models.JSONSongStorage
 class songView {
 
     fun mainMenu(): Int {
-        println("        Main Menu        ")
-        println("-------------------------")
-        println("     1. Add a Song")
-        println("     2. List all Songs")
-        println("     3. Update a Song")
-        println("     4. Delete a Song")
-        println("-------------------------")
-        println("     5. Search for a Song")
-        println("     6. Filter by Artist")
-        println("     7. Calculate total length of Playlist")
-        println("     8. Sort by Year")
-        println("-------------------------")
-        println("     0. Exit")
+        println("|                Main Menu               |")
+        println("|----------------------------------------|")
+        println("| 1. Add a Song                          |")
+        println("| 2. List all Songs                      |")
+        println("| 3. Update a Song                       |")
+        println("| 4. Delete a Song                       |")
+        println("|----------------------------------------|")
+        println("| 5. Search for a Song                   |")
+        println("| 6. Filter by Artist                    |")
+        println("| 7. Calculate total length of Playlist  |")
+        println("| 8. Sort by Year                        |")
+        println("|----------------------------------------|")
+        println("| 0. Exit                                |")
+        println("|----------------------------------------|")
         println()
-        println("Please enter an option: ")
+        println("| Please enter an option: ")
 
         val input = readLine()!!
         return if (input.toIntOrNull() != null && input.isNotEmpty())
@@ -73,13 +74,9 @@ class songView {
             println("There are currently no Songs on the system.....")
         } else {
             for (song in songs) {
-                println("-------------------------")
-                println("|Id: " + song.id)
-                println("|Title: " + song.title)
-                println("|Artist: " + song.artist)
-                println("|Duration: " + song.duration)
-                println("|Release Year: " + song.releaseYear)
-                println("|Award Won: " + song.wonAward)
+                println("| Id | Title | Artist |  Duration  |  Release Year  |  Did it win an Award? |")
+                println("| " + song.id + " | " + song.title + " | " + song.artist + " | " + song.duration + " | " + song.releaseYear + " | " + song.wonAward + " | ")
+                println()
             }
         }
         println()
@@ -92,24 +89,25 @@ class songView {
         do {
             println(useCase)
             songName = readLine()!!
-        }while (!validateString(songName))
+        } while (!validateString(songName))
 
         return songName
     }
 
-    fun updateSong(): Int{
+    fun updateSong(): Int {
         println()
-        println("What Value would you like to update?")
-        println("-------------------------")
-        println("     1. Title")
-        println("     2. Artist")
-        println("     3. Duration")
-        println("     4. Release Year")
-        println("     5. Award Won")
-        println("-------------------------")
-        println("     0. Return to Main Menu")
+        println("| What Value would you like to update? |")
+        println("|--------------------------------------|")
+        println("| 1. Title                             |")
+        println("| 2. Artist                            |")
+        println("| 3. Duration                          |")
+        println("| 4. Release Year                      |")
+        println("| 5. Award Won                         |")
+        println("|--------------------------------------|")
+        println("| 0. Return to Main Menu               |")
+        println("|--------------------------------------|")
         println()
-        println("Please enter an option: ")
+        println("| Please enter an option: ")
 
         val input = readLine()!!
         return if (input.toIntOrNull() != null && !input.isEmpty())
@@ -118,7 +116,7 @@ class songView {
             -1
     }
 
-    fun deleteSong(){
+    fun deleteSong() {
         println("Song Successfully Deleted....")
 
         println()
@@ -126,7 +124,7 @@ class songView {
         readln()
     }
 
-    fun filterByArtistsName(): String{
+    fun filterByArtistsName(): String {
         println("Please enter the name of the artist you would like to filter by")
         return readLine()!!
     }

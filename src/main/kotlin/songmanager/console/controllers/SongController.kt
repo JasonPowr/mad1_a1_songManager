@@ -10,7 +10,7 @@ import songmanager.console.views.songView
 
 class SongController {
     var songView = songView()
-    val songs = JSONSongStorage()
+    var songs = JSONSongStorage()
 
     fun startMenu() {
         var choice: Int
@@ -23,6 +23,8 @@ class SongController {
                 4 -> deleteSong()
                 5 -> findSong(songView.findSong("Please Enter the title of the song you wish to search for..."))
                 6 -> filterByArtistsName()
+                7 -> calculateTotalLengthOfPlaylist()
+                8 -> sortbyYear()
                 0 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -31,7 +33,7 @@ class SongController {
     }
 
     fun add(){
-        var song = songView.addSong()
+        val song = songView.addSong()
         songs.create(song)
     }
 
@@ -42,62 +44,64 @@ class SongController {
         val song = songs.findSongInJSON(songName)
         if (song == null)
             println("There is no Song on the system by that name.....")
+
         return song
     }
 
     fun updateSong(){
         songView.listSongs(songs.songs)
-        val songToUpdate = findSong(songView.findSong("Please Enter the title of the song you wish to Update..."))
-        val updatedSong = SongModel()
-        var input = ""
+        if(songs.songs.size != 0) {
+            val songToUpdate = findSong(songView.findSong("Please Enter the title of the song you wish to Update..."))
+            val updatedSong = SongModel()
+            var input = ""
 
-        var choice: Int
-        do {
-            choice = songView.updateSong()
-            when (choice) {
-                1 -> {
-                    do {
-                        println("Please enter the updated title of the Song:")
-                        updatedSong.title = readLine()!!
-                    } while (!validateString(updatedSong.title))
+            var choice: Int
+            do {
+                choice = songView.updateSong()
+                when (choice) {
+                    1 -> {
+                        do {
+                            println("Please enter the updated title of the Song:")
+                            updatedSong.title = readLine()!!
+                        } while (!validateString(updatedSong.title))
+                    }
+                    2 -> {
+                        do {
+                            println("Please enter the updated Artist of the Song:")
+                            updatedSong.artist = readLine()!!
+                        } while (!validateString(updatedSong.artist))
+                    }
+                    3 -> {
+                        do {
+                            println("Please enter the updated duration of the Song:")
+                            input = readLine()!!
+                        } while (!validateDouble(input))
+                        updatedSong.duration = input.toDouble()
+                    }
+                    4 -> {
+                        do {
+                            println("Please enter the updated Year the Song was Released:")
+                            input = readLine()!!
+                        } while (!validateInt(input))
+                        updatedSong.releaseYear = input.toInt()
+                    }
+                    5 -> {
+                        do {
+                            println("Has the Song won an award?")
+                            input = readLine()!!
+                        } while (!validateBool(input))
+                        updatedSong.wonAward = input.toBoolean()
+                    }
+                    0 -> println("Returning to Menu")
+                    else -> println("Invalid Option")
                 }
-                2 -> {
-                    do {
-                        println("Please enter the updated Artist of the Song:")
-                        updatedSong.artist = readLine()!!
-                    } while (!validateString(updatedSong.artist))
-                }
-                3 -> {
-                    do {
-                        println("Please enter the updated duration of the Song:")
-                        input = readLine()!!
-                    } while (!validateDouble(input))
-                    updatedSong.duration = input.toDouble()
-                }
-                4 -> {
-                    do {
-                        println("Please enter the updated Year the Song was Released:")
-                        input = readLine()!!
-                    } while (!validateInt(input))
-                    updatedSong.releaseYear = input.toInt()
-                }
-                5 -> {
-                    do {
-                        println("Has the Song won an award?")
-                        input = readLine()!!
-                    } while (!validateBool(input))
-                    updatedSong.wonAward = input.toBoolean()
-                }
-                0 -> println("Returning to Menu")
-                else -> println("Invalid Option")
+                println()
+            } while (choice != 0)
+
+            if (songToUpdate != null) {
+                songs.updateSong(updatedSong, songToUpdate)
             }
-            println()
-        } while (choice != 0)
-
-        if (songToUpdate != null) {
-            songs.updateSong(updatedSong,songToUpdate)
         }
-
     }
 
     fun deleteSong(){
@@ -113,6 +117,19 @@ class SongController {
     fun filterByArtistsName(){
         val artistName = songView.filterByArtistsName()
         songView.listSongs(songs.filterByArtistsName(artistName))
+    }
+
+    fun calculateTotalLengthOfPlaylist(){
+        val allSongs = songs.listAll()
+        var duration = 0.00
+        for (song in allSongs){
+            duration += song.duration
+        }
+        println(duration)
+    }
+
+    fun sortbyYear(){
+        songView.listSongs(songs.sortBy())
     }
 
 }

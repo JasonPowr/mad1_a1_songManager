@@ -71,6 +71,10 @@ class JSONSongStorage : SongStore {
         return songs.filter { songs -> songs.artist == artistName}
     }
 
+    override fun sortBy(): List<SongModel> {
+        return songs.sortedBy { songs -> songs.releaseYear }
+    }
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(songs, listType)
         write(JSON_FILE, jsonString)
