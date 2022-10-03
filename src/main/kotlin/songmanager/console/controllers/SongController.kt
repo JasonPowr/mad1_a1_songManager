@@ -1,9 +1,6 @@
 package songmanager.console.controllers
 
-import songmanager.console.helpers.validateBool
-import songmanager.console.helpers.validateDouble
-import songmanager.console.helpers.validateInt
-import songmanager.console.helpers.validateString
+import songmanager.console.helpers.*
 import songmanager.console.models.JSONSongStorage
 import songmanager.console.models.SongModel
 import songmanager.console.views.songView
@@ -75,7 +72,7 @@ class SongController {
                         do {
                             println("Please enter the updated duration of the Song:")
                             input = readLine()!!
-                        } while (!validateDouble(input))
+                        } while (!validateDouble(input) || !isTimeValid(input))
                         updatedSong.duration = input.toDouble()
                     }
                     4 -> {
@@ -89,6 +86,7 @@ class SongController {
                         do {
                             println("Has the Song won an award?")
                             input = readLine()!!
+                            input = handleMisInput(input)
                         } while (!validateBool(input))
                         updatedSong.wonAward = input.toBoolean()
                     }

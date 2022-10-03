@@ -1,8 +1,7 @@
 package songmanager.console.views
 
-import songmanager.console.models.SongModel
 import songmanager.console.helpers.*
-import songmanager.console.models.JSONSongStorage
+import songmanager.console.models.SongModel
 
 class songView {
 
@@ -47,21 +46,22 @@ class songView {
 
         var input = ""
         do {
-            println("Please enter the duration of the Song:")
+            println("Please enter the duration of the Song i.e Double(x.xx):")
             input = readLine()!!
-        } while (!validateDouble(input))
+        } while (!validateDouble(input) || !isTimeValid(input))
         newSong.duration = input.toDouble()
 
 
         do {
-            println("Please enter the Year the Song was Released:")
+            println("Please enter the Year the Song was Released i.e Int(xxxx):")
             input = readLine()!!
         } while (!validateInt(input))
         newSong.releaseYear = input.toInt()
 
         do {
-            println("Did the Song ever win an award?")
+            println("Did the Song ever win an award? i.e Boolean(true,false):")
             input = readLine()!!
+            input = handleMisInput(input)
         } while (!validateBool(input))
         newSong.wonAward = input.toBoolean()
 
@@ -75,7 +75,7 @@ class songView {
         } else {
             for (song in songs) {
                 println("| Id | Title | Artist |  Duration  |  Release Year  |  Did it win an Award? |")
-                println("| " + song.id + " | " + song.title + " | " + song.artist + " | " + song.duration + " | " + song.releaseYear + " | " + song.wonAward + " | ")
+                println("| " + song.id + " | " + song.title + " | " + song.artist + " | " + song.duration.toString().split(".")[0]+"m "+ song.duration.toString().split(".")[1]+"s"+ " | " + song.releaseYear + " | " + song.wonAward + " | ")
                 println()
             }
         }
