@@ -18,7 +18,7 @@ class SongController {
                 2 -> listAll()
                 3 -> updateSong()
                 4 -> deleteSong()
-                5 -> findSong(songView.findSong("Please Enter the title of the song you wish to search for..."))
+                5 -> findSongs(songView.findSong("Please Enter the title of the song you wish to search for..."))
                 6 -> filterByArtistsName()
                 7 -> calculateTotalLengthOfPlaylist()
                 8 -> sortbyYear()
@@ -39,10 +39,18 @@ class SongController {
     }
     fun findSong(songName: String): SongModel? {
         val song = songs.findSongInJSON(songName)
-        if (song == null)
+        if (song == null) {
             println("There is no Song on the system by that name.....")
-
+        }
         return song
+    }
+
+    fun findSongs(songName: String){
+        val songs = songs.findSongsInJSON(songName)
+        if(songs.isEmpty()){
+            println("No Songs found by that name")
+        }
+        songView.listSongs(songs)
     }
 
     fun updateSong(){

@@ -39,23 +39,35 @@ class JSONSongStorage : SongStore {
             songToUpdate.artist = updatedSong.artist
         }
 
-        if(updatedSong.title.isNotEmpty()){
+        if (updatedSong.title.isNotEmpty()) {
             songToUpdate.title = updatedSong.title
         }
 
-        if(updatedSong.duration != 0.0){
+        if (updatedSong.duration != 0.0) {
             songToUpdate.duration = updatedSong.duration
         }
 
-        if(updatedSong.releaseYear != 1111){
+        if (updatedSong.releaseYear != 1111) {
             songToUpdate.releaseYear = updatedSong.releaseYear
         }
 
-        if(songToUpdate.wonAward != updatedSong.wonAward){
+        if (songToUpdate.wonAward != updatedSong.wonAward) {
             songToUpdate.wonAward = updatedSong.wonAward
         }
 
         serialize()
+    }
+
+    override fun findSongsInJSON(songName: String): MutableList<SongModel> {
+        val foundSongs = mutableListOf<SongModel>()
+        val songList = listAll();
+        for (song in songList) {
+
+            if (song.title.contains(songName)) {
+                foundSongs.add(song)
+            }
+        }
+        return foundSongs
     }
 
     override fun findSongInJSON(songName: String): SongModel? {
@@ -68,7 +80,7 @@ class JSONSongStorage : SongStore {
     }
 
     override fun filterByArtistsName(artistName: String): List<SongModel> {
-        return songs.filter { songs -> songs.artist == artistName}
+        return songs.filter { songs -> songs.artist == artistName }
     }
 
     override fun sortBy(): List<SongModel> {

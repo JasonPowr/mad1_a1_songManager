@@ -13,7 +13,7 @@ class songView {
         println("| 3. Update a Song                       |")
         println("| 4. Delete a Song                       |")
         println("|----------------------------------------|")
-        println("| 5. Search for a Song                   |")
+        println("| 5. Search all Songs                    |")
         println("| 6. Filter by Artist                    |")
         println("| 7. Calculate total length of Playlist  |")
         println("| 8. Sort by Year                        |")
@@ -70,14 +70,23 @@ class songView {
     }
 
     fun listSongs(songs: List<SongModel>) {
-        if (songs.isEmpty()) {
-            println("There are currently no Songs on the system.....")
-        } else {
-            for (song in songs) {
-                println("| Id | Title | Artist |  Duration  |  Release Year  |  Did it win an Award? |")
-                println("| " + song.id + " | " + song.title + " | " + song.artist + " | " + song.duration.toString().split(".")[0]+"m "+ song.duration.toString().split(".")[1]+"s"+ " | " + song.releaseYear + " | " + song.wonAward + " | ")
-                println()
-            }
+        for (song in songs) {
+            println(
+                "|" +
+                        "Id".padStart(song.id.toString().length / 2) +
+                        "|".padStart(song.id.toString().length / 2) +
+                        "Title".padStart(song.title.length / 2) +
+                        "|".padStart(song.title.length / 2) +
+                        "Artist".padStart(song.artist.length / 2) +
+                        "|".padStart(song.artist.length / 2) +
+                        " Duration | Release Year | Award Won? |"
+            )
+            println(
+                "|" + song.id + "|" + song.title + "|" + song.artist + "|  " + song.duration.toString()
+                    .split(".")[0] + "m" + song.duration.toString()
+                    .split(".")[1] + "s" + "  |  " + song.releaseYear + "  |  " + song.wonAward + "  |"
+            )
+            println()
         }
         println()
         println("Press Enter to Continue....")
@@ -131,4 +140,5 @@ class songView {
 
 }
 
+//https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/pad-start.html
 //https://discuss.kotlinlang.org/t/printing-in-colors/22492
