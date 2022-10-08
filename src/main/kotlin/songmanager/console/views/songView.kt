@@ -4,30 +4,29 @@ import songmanager.console.helpers.*
 import songmanager.console.models.SongModel
 
 //fix list layout
-////fix output of calculate total length of playlist
-//make menu colourful
 //add tests
 
 
 class songView {
 
     fun mainMenu(): Int {
-        println("|                Main Menu               |")
-        println("|----------------------------------------|")
-        println("| 1. Add a Song                          |")
-        println("| 2. List all Songs                      |")
-        println("| 3. Update a Song                       |")
-        println("| 4. Delete a Song                       |")
-        println("|----------------------------------------|")
-        println("| 5. Search all Songs                    |")
-        println("| 6. Filter by Artist                    |")
-        println("| 7. Calculate total length of Playlist  |")
-        println("| 8. Sort by Year                        |")
-        println("|----------------------------------------|")
-        println("| 0. Exit                                |")
-        println("|----------------------------------------|")
+        println("$black|----------------------------------------$black|")
+        println("$black|               ${purple}Main Menu$reset                $black|")
+        println("$black|----------------------------------------$black|")
+        println("$black|$purple 1$reset. Add a Song                          $black|")
+        println("$black|$purple 2$reset. List all Songs                      $black|")
+        println("$black|$purple 3$reset. Update a Song                       $black|")
+        println("$black|$purple 4$reset. Delete a Song                       $black|")
+        println("$black|----------------------------------------$black|")
+        println("$black|$purple 5$reset. Search all Songs                    $black|")
+        println("$black|$purple 6$reset. Filter by Artist                    $black|")
+        println("$black|$purple 7$reset. Calculate total length of Playlist  $black|")
+        println("$black|$purple 8$reset. Sort by Year                        $black|")
+        println("$black|----------------------------------------$black|")
+        println("$black|$purple 0$reset. Exit                                $black|")
+        println("$black|----------------------------------------|")
         println()
-        println("| Please enter an option: ")
+        println("|$reset Please enter an option: ")
 
         val input = readLine()!!
         return if (input.toIntOrNull() != null && input.isNotEmpty())
@@ -111,18 +110,19 @@ class songView {
 
     fun updateSong(): Int {
         println()
-        println("| What Value would you like to update? |")
-        println("|--------------------------------------|")
-        println("| 1. Title                             |")
-        println("| 2. Artist                            |")
-        println("| 3. Duration                          |")
-        println("| 4. Release Year                      |")
-        println("| 5. Award Won                         |")
-        println("|--------------------------------------|")
-        println("| 0. Return to Main Menu               |")
-        println("|--------------------------------------|")
+        println("$black|--------------------------------------$black|")
+        println("$black| ${purple}What Value would you like to update?$black|")
+        println("$black|--------------------------------------$black|")
+        println("$black|$purple 1$reset. Title                             $black|")
+        println("$black|$purple 2$reset. Artist                            $black|")
+        println("$black|$purple 3$reset. Duration                          $black|")
+        println("$black|$purple 4$reset. Release Year                      $black|")
+        println("$black|$purple 5$reset. Award Won                         $black|")
+        println("$black|--------------------------------------$black|")
+        println("$black|$purple 0$reset. Return to Main Menu               $black|")
+        println("$black|--------------------------------------$black|")
         println()
-        println("| Please enter an option: ")
+        println("|$reset Please enter an option: ")
 
         val input = readLine()!!
         return if (input.toIntOrNull() != null && !input.isEmpty())
@@ -153,6 +153,8 @@ class songView {
 
 }
 
+/**         References
 //https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/pad-start.html
 //https://discuss.kotlinlang.org/t/printing-in-colors/22492
 //https://json-generator.com/
+ **/

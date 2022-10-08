@@ -2,7 +2,9 @@ package songmanager.console.helpers
 
 const val red = "\u001b[31m"
 const val reset = "\u001b[0m"
-var errMessage = red + "Please enter a Valid Value"
+const val black = "\u001B[30m"
+const val purple = "\u001B[35m"
+var errMessage = red + "Please enter a Valid Value...."
 
 fun validateString(str: String): Boolean {
     if (str.isBlank()) {
