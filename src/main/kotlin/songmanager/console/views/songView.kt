@@ -128,7 +128,6 @@ class songView {
         for (song in songs) {
             println(song.artist)
         }
-
         println()
         println("Please enter the name of the artist you would like to filter by")
         return readLine()!!
