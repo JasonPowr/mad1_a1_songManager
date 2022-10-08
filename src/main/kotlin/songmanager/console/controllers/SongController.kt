@@ -4,9 +4,7 @@ import songmanager.console.helpers.*
 import songmanager.console.models.JSONSongStorage
 import songmanager.console.models.SongModel
 import songmanager.console.views.songView
-import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
-import kotlin.time.toDuration
 
 class SongController {
     var songView = songView()

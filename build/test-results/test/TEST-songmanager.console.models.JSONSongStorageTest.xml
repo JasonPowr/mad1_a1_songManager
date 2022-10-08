@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="songmanager.console.models.JSONSongStorageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-03T09:23:53" hostname="LAPTOP-7V9VTHBD" time="0.037">
+<testsuite name="songmanager.console.models.JSONSongStorageTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-10-08T15:28:28" hostname="LAPTOP-7V9VTHBD" time="0.198">
   <properties/>
-  <testcase name="create()" classname="songmanager.console.models.JSONSongStorageTest" time="0.037"/>
+  <testcase name="create()" classname="songmanager.console.models.JSONSongStorageTest" time="0.054"/>
+  <testcase name="sortBy()" classname="songmanager.console.models.JSONSongStorageTest" time="0.041"/>
+  <testcase name="findSongsInJSON()" classname="songmanager.console.models.JSONSongStorageTest" time="0.023"/>
+  <testcase name="filterByArtistsName()" classname="songmanager.console.models.JSONSongStorageTest" time="0.015"/>
+  <testcase name="updateSong()" classname="songmanager.console.models.JSONSongStorageTest" time="0.013"/>
+  <testcase name="listAll()" classname="songmanager.console.models.JSONSongStorageTest" time="0.011"/>
+  <testcase name="findSongInJSON()" classname="songmanager.console.models.JSONSongStorageTest" time="0.007"/>
+  <testcase name="removeSong()" classname="songmanager.console.models.JSONSongStorageTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

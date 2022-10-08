@@ -4,9 +4,6 @@ import songmanager.console.helpers.*
 import songmanager.console.models.SongModel
 import kotlin.time.Duration.Companion.minutes
 
-//add tests
-
-
 class songView {
 
     fun mainMenu(): Int {
