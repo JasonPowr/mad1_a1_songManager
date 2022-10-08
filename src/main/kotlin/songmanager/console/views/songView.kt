@@ -2,8 +2,8 @@ package songmanager.console.views
 
 import songmanager.console.helpers.*
 import songmanager.console.models.SongModel
+import kotlin.time.Duration.Companion.minutes
 
-//fix list layout
 //add tests
 
 
@@ -76,22 +76,8 @@ class songView {
 
     fun listSongs(songs: List<SongModel>) {
         for (song in songs) {
-            println(
-                "|" +
-                        "Id".padStart(song.id.toString().length / 2) +
-                        "|".padStart(song.id.toString().length / 2) +
-                        "Title".padStart(song.title.length / 2) +
-                        "|".padStart(song.title.length / 2) +
-                        "Artist".padStart(song.artist.length / 2) +
-                        "|".padStart(song.artist.length / 2) +
-                        " Duration | Release Year | Award Won? |"
-            )
-            println(
-                "|" + song.id + "|" + song.title + "|" + song.artist + "|  " + song.duration.toString()
-                    .split(".")[0] + "m" + song.duration.toString()
-                    .split(".")[1] + "s" + "  |  " + song.releaseYear + "  |  " + song.wonAward + "  |"
-            )
-            println()
+            println("Title: "+song.title+", Artist: "+song.artist+", Duration: "+song.duration.minutes+", Release Year: "+song.releaseYear+", Won award?: " + song.wonAward)
+            println("$black---------------------------------------------------------------------------------------------------------------$reset")
         }
         println()
         println("Press Enter to Continue....")
