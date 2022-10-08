@@ -18,7 +18,17 @@ class SongController {
                 2 -> listAll()
                 3 -> updateSong()
                 4 -> deleteSong()
-                5 -> findSongs(songView.findSong("Please Enter the title of the song you wish to search for..."))
+                5 -> {
+                    if (songs.songs.isEmpty()) {
+                        println("There are currently no songs in the system...")
+
+                        println()
+                        println("Press Enter to Continue....")
+                        readln()
+                    }else{
+                        findSongs(songView.findSong("Please Enter the title of the song you wish to search for..."))
+                    }
+                }
                 6 -> filterByArtistsName()
                 7 -> calculateTotalLengthOfPlaylist()
                 8 -> sortbyYear()
@@ -29,14 +39,18 @@ class SongController {
         } while (choice != 0)
     }
 
-    fun add(){
+    fun add() {
         val song = songView.addSong()
         songs.create(song)
     }
 
-    fun listAll(){
+    fun listAll() {
+        if (songs.songs.isEmpty()) {
+            println("There are currently no songs in the system...")
+        }
         songView.listSongs(songs.songs)
     }
+
     fun findSong(songName: String): SongModel? {
         val song = songs.findSongInJSON(songName)
         if (song == null) {
@@ -45,17 +59,20 @@ class SongController {
         return song
     }
 
-    fun findSongs(songName: String){
-        val songs = songs.findSongsInJSON(songName)
-        if(songs.isEmpty()){
-            println("No Songs found by that name")
-        }
-        songView.listSongs(songs)
+    fun findSongs(songName: String) {
+            val songs = songs.findSongsInJSON(songName)
+            if (songs.isEmpty()) {
+                println("No Songs found by that name")
+            }
+            songView.listSongs(songs)
     }
 
-    fun updateSong(){
+    fun updateSong() {
+        if (songs.songs.isEmpty()) {
+            println("There are currently no songs in the system...")
+        }
         songView.listSongs(songs.songs)
-        if(songs.songs.size != 0) {
+        if (songs.songs.size != 0) {
             val songToUpdate = findSong(songView.findSong("Please Enter the title of the song you wish to Update..."))
             val updatedSong = SongModel()
             var input = ""
@@ -110,31 +127,60 @@ class SongController {
         }
     }
 
-    fun deleteSong(){
-        songView.listSongs(songs.songs)
-        println()
-        val songToDelete = findSong(songView.findSong("Please Enter the title of the song you wish to Delete..."))
-        if (songToDelete != null) {
-            songs.removeSong(songToDelete)
-            songView.deleteSong()
+    fun deleteSong() {
+        if (songs.songs.isEmpty()) {
+            println("There are currently no songs in the system...")
+
+            println()
+            println("Press Enter to Continue....")
+            readln()
+
+        } else {
+            songView.listSongs(songs.songs)
+            println()
+            val songToDelete = findSong(songView.findSong("Please Enter the title of the song you wish to Delete..."))
+            if (songToDelete != null) {
+                songs.removeSong(songToDelete)
+                songView.deleteSong()
+            }
+        }
+
+    }
+
+    fun filterByArtistsName() {
+        if (songs.songs.isEmpty()) {
+            println("There are currently no songs in the system...")
+
+            println()
+            println("Press Enter to Continue....")
+            readln()
+        } else {
+            val artistName = songView.filterByArtistsName(songs.songs)
+            songView.listSongs(songs.filterByArtistsName(artistName))
         }
     }
 
-    fun filterByArtistsName(){
-        val artistName = songView.filterByArtistsName()
-        songView.listSongs(songs.filterByArtistsName(artistName))
-    }
+    fun calculateTotalLengthOfPlaylist() {
+        if (songs.songs.isEmpty()) {
+            println("There are currently no songs in the system...")
 
-    fun calculateTotalLengthOfPlaylist(){
-        val allSongs = songs.listAll()
-        var duration = 0.00
-        for (song in allSongs){
-            duration += song.duration
+            println()
+            println("Press Enter to Continue....")
+            readln()
+        } else {
+            val allSongs = songs.listAll()
+            var duration = 0.00
+            for (song in allSongs) {
+                duration += song.duration
+            }
+            println(duration)
         }
-        println(duration)
     }
 
-    fun sortbyYear(){
+    fun sortbyYear() {
+        if (songs.songs.isEmpty()) {
+            println("There are currently no songs in the system...")
+        }
         songView.listSongs(songs.sortBy())
     }
 

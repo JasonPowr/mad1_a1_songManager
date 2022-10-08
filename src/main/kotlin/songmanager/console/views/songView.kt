@@ -3,6 +3,12 @@ package songmanager.console.views
 import songmanager.console.helpers.*
 import songmanager.console.models.SongModel
 
+//fix list layout
+////fix output of calculate total length of playlist
+//make menu colourful
+//add tests
+
+
 class songView {
 
     fun mainMenu(): Int {
@@ -133,7 +139,14 @@ class songView {
         readln()
     }
 
-    fun filterByArtistsName(): String {
+    fun filterByArtistsName(songs: List<SongModel>): String {
+        println("Current Artists in the System...")
+        println()
+        for (song in songs) {
+            println(song.artist)
+        }
+
+        println()
         println("Please enter the name of the artist you would like to filter by")
         return readLine()!!
     }
@@ -142,3 +155,4 @@ class songView {
 
 //https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/pad-start.html
 //https://discuss.kotlinlang.org/t/printing-in-colors/22492
+//https://json-generator.com/
